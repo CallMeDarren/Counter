@@ -2,7 +2,6 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     {{ this.$store.state.count }}
-    <!-- <button @click="add">+</button> -->
     <button @click="increment">+</button>
     <button @click="minus">-</button>
     <button @click="oddIncrement">increment if odd</button>
@@ -18,26 +17,10 @@ export default {
   props: {
     msg: String,
   },
-  data(){
-    return{}
-  },
   computed: mapGetters([
     'evenOrOdd'
   ]),
   methods:{
-    // increment(){
-    //   this.$store.commit('increment');
-    // },
-    // minus(){
-    //   this.$store.commit('minus');
-    // },
-    // oddIncrement(){
-    //   this.$store.dispatch('oddIncrement');
-    // },
-    // incrementAsync(){
-    //   this.$store.dispatch('incrementAsync');
-    // },
-
     // 将this.increment()映射为this.$store.commit('increment'); 
     // ...mapMutations([
     //   'increment', 
