@@ -1,16 +1,26 @@
 <template>
   <div id="app">
-    <Counter msg="Welcome to My Vue.js App"/>
+    <!-- <Counter msg="Welcome to My Vue.js App"/> -->
+    <h2>{{ msg }}</h2>
+    <router-link to="/counter">Go to Counter</router-link>
+    <p><router-view></router-view></p>
   </div>
 </template>
 
 <script>
-import Counter from './components/Counter.vue'
+// import Counter from './components/Counter.vue'
 
 export default {
   name: 'App',
-  components: {
-    Counter
+  // components: {
+  //   Counter
+  // },
+  data(){
+    return{
+      msg: 'Welcome to My Vue.js App',
+    }
+  },
+  methods:{
   }
 }
 </script>
