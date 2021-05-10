@@ -1,26 +1,26 @@
 <template>
   <div id="app">
-    <!-- <Counter msg="Welcome to My Vue.js App"/> -->
     <h2>{{ msg }}</h2>
-    <router-link to="/counter">Go to Counter</router-link>
+    <button @click="goBack">goBack</button>
+    <p><router-link to="/counter">Go to Counter</router-link></p>
+    <p><router-link to="/shoppingcart">Go to shoppingCart</router-link></p>
     <p><router-view></router-view></p>
   </div>
 </template>
 
 <script>
-// import Counter from './components/Counter.vue'
 
 export default {
   name: 'App',
-  // components: {
-  //   Counter
-  // },
   data(){
     return{
       msg: 'Welcome to My Vue.js App',
     }
   },
   methods:{
+    goBack() {
+      window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+    }
   }
 }
 </script>

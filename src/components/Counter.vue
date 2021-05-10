@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
     {{ this.$store.state.count }}
     <button @click="increment">+</button>
     <button @click="minus">-</button>
@@ -14,9 +13,6 @@
 import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'Counter',
-  props: {
-    msg: String,
-  },
   computed: mapGetters([
     'evenOrOdd'
   ]),
