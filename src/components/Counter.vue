@@ -19,6 +19,7 @@ export default {
   ]),
   created(){
   },
+  
   methods:{
     // 将组件methods中的this.increment()映射为this.$store.commit('increment'); 
     // ...mapMutations([
