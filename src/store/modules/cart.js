@@ -1,12 +1,16 @@
-import shop from '../../api/shop';
+// import shop from '../../api/shop';
 const state = () => ({
     items: [],
 })
 const getters = {
-
+//     cartProducts:(state, rootState) =>{
+//         return state.items.map(({id}) =>{
+            
+//         } )
+//     }
 }
 const actions = {
-  addProductToCart({ state, commit }, product){
+  addProductToCart({ commit }, product){
     commit('pushProductToCart', { id: product.id });
   }
 }

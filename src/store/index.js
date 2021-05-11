@@ -8,9 +8,9 @@ import cart from './modules/cart';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    modules:{
-        counter,
-        products,
-        cart,
-    }
+  modules: {
+    counter,
+    products,
+    cart,
+  }
 });
