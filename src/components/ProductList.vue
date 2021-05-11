@@ -5,17 +5,9 @@
     <h3>Products</h3>
     <div class="list">
       <ul>
-        <li>
-          <p>iPad4 Mini - $500.01</p>
-          <button @click="addProductToCart">Add to cart</button>
-        </li>
-        <li>
-          <p>H&M T-Shirt White - $10.99</p>
-          <button>Add to cart</button>
-        </li>
-        <li>
-          <p>Charli XCX - Sucker CD - $19.99</p>
-          <button>Add to cart</button>
+        <li v-for="item in allProducts" :key="item.id">
+          <p>{{ item.title }} - {{item.price}}</p>
+          <button @click="addProductToCart(item)">Add to cart</button>
         </li>
       </ul>
     </div>
@@ -23,15 +15,25 @@
 </template>
 
 <script>
+import { mapActions, mapGetters, mapState } from 'vuex';
+
 export default {
   name: "ProductList",
   data() {
     return {};
   },
+  created(){
+    this.$store.dispatch('products/getAllProducts');
+  },
+  updated(){
+    console.log('allProducts', this.allProducts);
+  },
+  computed:{
+    ...mapState('products', { allProducts: state => state.all }),
+  },
   methods: {
-    addProductToCart(){
-      
-    }
+    ...mapActions('cart',['addProductToCart']),
+    ...mapGetters([]),
   },
 };
 </script>
