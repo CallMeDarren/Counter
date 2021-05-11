@@ -7,7 +7,7 @@
       <ul>
         <li>
           <p>iPad4 Mini - $500.01</p>
-          <button>Add to cart</button>
+          <button @click="addProductToCart">Add to cart</button>
         </li>
         <li>
           <p>H&M T-Shirt White - $10.99</p>
@@ -28,12 +28,16 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    addProductToCart(){
+      
+    }
+  },
 };
 </script>
 
 <style>
-.list{
+.list {
   display: flex;
   justify-content: center;
   text-align: left;

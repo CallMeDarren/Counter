@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    {{ this.$store.state.count }}
+    {{ this.$store.state.counter.count }}
     <button @click="increment">+</button>
     <button @click="minus">-</button>
     <button @click="oddIncrement">increment if odd</button>
@@ -11,13 +11,16 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'Counter',
-  computed: mapGetters([
+  computed: mapGetters('counter',[
     'evenOrOdd'
   ]),
+  created(){
+  },
   methods:{
-    // 将this.increment()映射为this.$store.commit('increment'); 
+    // 将组件methods中的this.increment()映射为this.$store.commit('increment'); 
     // ...mapMutations([
     //   'increment', 
     //   'minus',
@@ -28,7 +31,7 @@ export default {
     //   add: 'increment',
     // })
 
-    ...mapActions([
+    ...mapActions('counter',[
       'increment', 
       'minus',
       'oddIncrement',
