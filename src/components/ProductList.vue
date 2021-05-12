@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Shopping Cart Example</h2>
-    <hr />
+    <h3>Shopping Cart Example</h3>
+    <hr>
     <h3>Products</h3>
     <div class="list">
       <ul>
@@ -24,9 +24,6 @@ export default {
   },
   created(){
     this.$store.dispatch('products/getAllProducts');
-  },
-  updated(){
-    // console.log('this.all', this.allProducts);
   },
   computed:{
     ...mapState('products', { allProducts: state => state.all }),

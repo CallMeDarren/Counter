@@ -1,26 +1,37 @@
 <template>
   <div>
     <product-list></product-list>
-    <hr />
+    <hr>
     <h3>Your Cart</h3>
-    <p v-if="!cartProducts.length">{{ msg }}</p>
-    <div class="list">
-      <ul>
-        <li v-for="item in cartProducts" :key="item.id">
-          {{ item.title }} - ${{ item.price }} x{{ item.quantity }}
-        </li>
-      </ul>
+    <div class="flexBox">
+      <div>
+          <p v-if="!cartProducts.length">{{ msg }}</p>
+          <div class="list">
+            <ul>
+              <li v-for="item in cartProducts" :key="item.id">
+                {{ item.title }} - ${{ item.price }} x{{ item.quantity }}
+              </li>
+            </ul>
+          </div>
+      </div>
+
+      <div>
+        <p>Total:${{ totalAmount }}</p>
+        <p>
+          <button 
+            :disabled="!cartProducts.length"
+            @click="checkout(cartProducts)"
+          >Checkout</button>
+      </p>
+      <p v-show="checkoutStatus">Checkout {{checkoutStatus}}!</p>
+      </div>
     </div>
-    <p>Total:${{ totalAmount }}</p>
-    <p>
-      <button :disabled="!cartProducts.length">Checkout</button>
-    </p>
   </div>
 </template>
 
 <script>
 import ProductList from "./ProductList";
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default {
   name: "shoppingCart",
@@ -29,20 +40,27 @@ export default {
   },
   computed: {
     ...mapGetters("cart", ["cartProducts", "totalAmount"]),
-  },
-  updated() {
-    console.log("cartProducts", this.cartProducts);
+    ...mapState("cart",{checkoutStatus: state => state.checkoutStatus})
   },
   data() {
     return {
       msg: "Please add some products to cart.",
     };
   },
-  methods: {},
+  methods: {
+    checkout(cartProducts){
+      this.$store.dispatch('cart/checkout', cartProducts);
+    }
+  },
 };
 </script>
 
 <style>
+.flexBox{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
 .list {
   display: flex;
   justify-content: center;
