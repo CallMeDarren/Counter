@@ -1,4 +1,3 @@
-// import * as math from "mathjs";
 import shop from '../../api/shop';
 const state = () => ({
     items: [],
@@ -17,14 +16,14 @@ const getters = {
     });
   },
   totalAmount: (state, getters) =>{
-    return getters.cartProducts.reduce((total, product)=>{
-      return total + product.price * product.quantity;
-    }, 0);
-    // let total = 0;
-    // getters.cartProducts.forEach(it => {
-    //   total += it.price.math.multiply(it.quantity);
-    // });
-    // return total;
+    // return getters.cartProducts.reduce((total, product)=>{
+    //   return total + product.price * product.quantity;
+    // }, 0);
+    let total = 0;
+    getters.cartProducts.forEach(it => {
+      total += it.price * it.quantity;
+    });
+    return total;
   }
 }
 const actions = {
