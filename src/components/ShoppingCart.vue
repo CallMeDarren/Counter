@@ -40,7 +40,10 @@ export default {
   },
   computed: {
     ...mapGetters("cart", ["cartProducts", "totalAmount"]),
-    ...mapState("cart",{checkoutStatus: state => state.checkoutStatus})
+    // ...mapState("cart",{checkoutStatus: state => state.checkoutStatus})
+    ...mapState({
+      checkoutStatus: state => state.cart.checkoutStatus
+    }),
   },
   data() {
     return {

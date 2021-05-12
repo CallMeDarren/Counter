@@ -29,7 +29,7 @@ const getters = {
 }
 const actions = {
   addProductToCart({ state, commit }, product){
-    commit('setCheckoutStatus', 'null');
+    commit('setCheckoutStatus', null);
     if( product.inventory > 0){
       const cartItem = state.items.find(it => it.id === product.id);
       if(!cartItem){
