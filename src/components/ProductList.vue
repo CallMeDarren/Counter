@@ -6,7 +6,7 @@
     <div class="list">
       <ul>
         <li v-for="item in allProducts" :key="item.id">
-          <p>{{ item.title }} - {{item.price}}</p>
+          <p>{{ item.title }} - ${{item.price}}</p>
           <button @click="addProductToCart(item)">Add to cart</button>
         </li>
       </ul>
@@ -24,9 +24,6 @@ export default {
   },
   created(){
     this.$store.dispatch('products/getAllProducts');
-  },
-  updated(){
-    console.log('allProducts', this.allProducts);
   },
   computed:{
     ...mapState('products', { allProducts: state => state.all }),

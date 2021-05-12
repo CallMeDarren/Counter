@@ -4,7 +4,9 @@ const _products = [
   { 'id': 3, 'title': 'Charli XCX - Sucker CD', 'price': 19.99, 'inventory': 5 },
   { 'id': 4, 'title': 'Mac', 'price': 1999, 'inventory': 15 }
 ];
+
 export default{
+  // 回调函数：将函数作为参数传入
   getProducts(cb){
     setTimeout(() => cb(_products), 100);
   },

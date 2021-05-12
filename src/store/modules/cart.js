@@ -3,11 +3,12 @@ const state = () => ({
     items: [],
 })
 const getters = {
-//     cartProducts:(state, rootState) =>{
-//         return state.items.map(({id}) =>{
-            
-//         } )
-//     }
+  cartProducts:(state, getters, rootState, rootGetters) =>{
+    const allPro = rootState.products.all;
+    const completePro = state.items.map(it => allPro.find(i => i.id === it.id));
+    console.log('completePro', completePro);
+    return completePro;
+  }
 }
 const actions = {
   addProductToCart({ commit }, product){

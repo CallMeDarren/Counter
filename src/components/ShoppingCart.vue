@@ -3,19 +3,21 @@
        <product-list></product-list>
        <hr/>
        <h3>Your Cart</h3>
-       <p>{{msg}}</p>
-       <ul>
-         <li v-for="item in cartProducts" :key="item.id">
-           {{ item.title }} - {{ item.price }}
-         </li>
-       </ul>
+       <p v-if="!cartProducts.length">{{msg}}</p>
+       <div class="list">
+         <ul>
+          <li v-for="item in cartProducts" :key="item.id">
+            {{ item.id}}{{ item.title }} - {{ item.price }}
+          </li>
+        </ul>
+       </div>
        <p>Total:${{ totalAmount }}</p>
     </div>
 </template>
 
 <script>
 import ProductList from './ProductList';
-import {mapState} from 'vuex';
+import {mapState, mapGetters} from 'vuex';
 
 export default {
   name: 'shoppingCart',
@@ -23,22 +25,22 @@ export default {
     ProductList,
   },
   computed:{
-    ...mapState('cart',{ cartProducts: state => state.items }),
+    ...mapGetters('cart', ['cartProducts']),
   },
   data() {
     return {
       msg: 'Please add some products to cart.',
       totalAmount: 0,
      }
-},
-  methods: {
-
-
   },
+  methods: {},
 }
 </script>
 
 <style>
-
-
+.list {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
 </style>

@@ -3,7 +3,7 @@ const state = () => ({
     all: [],
 })
 const getters = {
-
+  // getProductsById: ()=>{}
 }
 const actions = {
   getAllProducts({ commit }){
