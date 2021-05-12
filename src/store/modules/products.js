@@ -15,6 +15,10 @@ const actions = {
 const mutations = {
   setProducts(state, products){
     state.all = products;
+  },
+  decrementProductInventory(state, { id }){
+    const item = state.all.find(it => it.id === id);
+    item.inventory--;
   }
 }
 export default{

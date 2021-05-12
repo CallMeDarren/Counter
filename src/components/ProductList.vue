@@ -7,7 +7,7 @@
       <ul>
         <li v-for="item in allProducts" :key="item.id">
           <p>{{ item.title }} - ${{item.price}}</p>
-          <button @click="addProductToCart(item)">Add to cart</button>
+          <button :disabled="!item.inventory" @click="addProductToCart(item)">Add to cart</button>
         </li>
       </ul>
     </div>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "ProductList",
@@ -25,12 +25,14 @@ export default {
   created(){
     this.$store.dispatch('products/getAllProducts');
   },
+  updated(){
+    // console.log('this.all', this.allProducts);
+  },
   computed:{
     ...mapState('products', { allProducts: state => state.all }),
   },
   methods: {
-    ...mapActions('cart',['addProductToCart']),
-    ...mapGetters([]),
+    ...mapActions('cart', ['addProductToCart'])
   },
 };
 </script>
