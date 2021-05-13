@@ -1,12 +1,10 @@
 <template>
   <div>
-    <h3>Shopping Cart Example</h3>
-    <hr>
     <h3>Products</h3>
     <div class="list">
       <ul>
         <li v-for="item in allProducts" :key="item.id">
-          <p>{{ item.title }} - ${{item.price}}</p>
+          <p>{{ item.title }} - ${{item.price}} - inventory:{{ item.inventory}}</p>
           <button :disabled="!item.inventory" @click="addProductToCart(item)">Add to cart</button>
         </li>
       </ul>
@@ -35,9 +33,10 @@ export default {
 </script>
 
 <style>
-.list {
+/* 父组件的css样式下沉到子组件 */
+/* .list {
   display: flex;
   justify-content: center;
   text-align: left;
-}
+} */
 </style>

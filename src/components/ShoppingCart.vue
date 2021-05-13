@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <product-list></product-list>
-    <hr>
-    <h3>Your Cart</h3>
-    <div class="flexBox">
-      <div>
+<div>
+  <h3>Shopping Cart Example</h3>
+  <hr>
+  <div class="layout">
+    <template>
+      <product-list></product-list>
+    </template>
+    <div class="cart-box">
+      <h3>Your Cart</h3>
+      <div class="list">
           <p v-if="!cartProducts.length">{{ msg }}</p>
-          <div class="list">
+          <div>
             <ul>
               <li v-for="item in cartProducts" :key="item.id">
                 {{ item.title }} - ${{ item.price }} x{{ item.quantity }}
@@ -27,6 +31,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -58,15 +63,19 @@ export default {
 };
 </script>
 
-<style>
-.flexBox{
+<style scoped>
+.layout{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: flex-start;
 }
-.list {
+.cart-box{
   display: flex;
-  justify-content: center;
-  text-align: left;
+  flex-direction: column;
 }
+/* css穿透 ：/deep/*/
+>>>.list {
+    text-align: left;
+  }
+
 </style>
