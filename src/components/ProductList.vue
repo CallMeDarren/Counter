@@ -9,14 +9,22 @@
         </li>
       </ul>
     </div>
+    <p> {{ message}} -- {{ $attrs }}</p>
+    <grand-son v-bind="$attrs"></grand-son>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex';
+import GrandSon from "./GrandSon";
 
 export default {
   name: "ProductList",
+  components:{
+    GrandSon,
+  },
+  inheritAttrs: true,
+  props: ["message"],
   data() {
     return {};
   },

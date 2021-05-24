@@ -4,7 +4,7 @@
   <hr>
   <div class="layout">
     <template>
-      <product-list></product-list>
+      <product-list :message = "msg" :hello = "hello"></product-list>
     </template>
     <div class="cart-box">
       <h3>Your Cart</h3>
@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       msg: "Please add some products to cart.",
+      hello: "hello, I'm grandson component"
     };
   },
   methods: {
